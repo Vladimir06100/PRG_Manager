@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>{{--@yield('title')--}}Titre test</title>
+  <title>@yield('title')</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
@@ -20,11 +20,9 @@
           <li><a href="" class="nav-link px-2 text-white">Groupes</a></li>
           <li><a href="" class="nav-link px-2 text-white">Cree un personage</a></li>
         </ul>
-
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
           <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
         </form>
-
         <div class="text-end">
           <a href="{{ route('user.connexion') }}" class="btn btn-outline-success me-2">Connexion</a>
           <a href="{{ route('user.inscription') }}" class="btn btn-outline-success">Inscription</a>
@@ -35,17 +33,15 @@
     {{--END HEADER--}}
 
     {{--CONTENT--}}
-  <main class="container">
-    <div class="content">
-     {{-- @yield('content') --}}
-    </div>
+  <main class="container m-auto">
+     @yield('content')
   </main>
   {{--END CONTENT--}}
 
   {{--FOOTER--}}
   <footer class="mt-auto py-1 text-bg-dark">
     <ul class="nav justify-content-center pb-2 mb-2">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Page Principale</a></li>
+      <li class="nav-item"><a href="{{ route('index') }}" class="nav-link px-2 text-white">Page Principale</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-white">List de personnages</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Vos personnages</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Groupes</a></li>

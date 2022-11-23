@@ -10,7 +10,7 @@ class UserController extends Controller
     //index
     public function index()
     {
-        return view('/base');
+        return view('/index');
     }
     // connexion
     public function connexion()
