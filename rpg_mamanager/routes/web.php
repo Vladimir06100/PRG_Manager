@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,14 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 /* page principale */
-Route::get('/', function () {
-    return view('base');
-});
+Route::get('/', [UserController::class, 'index'])->name('index');
 /* page connexion */
-Route::get('/rpg_manager/connexion', function () {
-    return view('/rpg_manager/connexion');
-});
+Route::get('/rpg_manager/connexion', [UserController::class, 'connexion'])->name('user.connexion');
 /* page inscription */
-Route::get('/rpg_manager/inscription', function () {
-    return view('/rpg_manager/inscription');
-});
+Route::get('/rpg_manager/inscription', [UserController::class, 'inscription'])->name('user.inscription');

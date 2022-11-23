@@ -13,12 +13,8 @@
     <header class="p-3 text-bg-dark">
       <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-        </a>
-
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 text-white">Page Principale</a></li>
+          <li><a href="{{ route('index') }}" class="nav-link px-2 text-white">Page Principale</a></li>
           <li><a href="#" class="nav-link px-2 text-white">List de personnages</a></li>
           <li><a href="#" class="nav-link px-2 text-white">Vos personnages</a></li>
           <li><a href="#" class="nav-link px-2 text-white">Groupes</a></li>
@@ -30,9 +26,9 @@
         </form>
 
         <div class="text-end">
-          <button type="button" class="btn btn-outline-success me-2">Connexion</button>
-          <button type="button" class="btn btn-outline-success">Inscription</button>
-        </div>
+          <a href="{{ route('user.connexion') }}" class="btn btn-outline-success me-2">Connexion</a>
+          <a href="{{ route('user.inscription') }}" class="btn btn-outline-success">Inscription</a>
+       </div>
       </div>
       </div>
     </header>
@@ -45,7 +41,7 @@
         <div class="row">
           <div class="container container--mini">
             <h1 class="text-center">Inscription</h1>
-            <form name="loginform" id="loginform" action="" method="post">
+            <form name="loginform" id="loginform" action="" method="post">  
               <div class="form-group">
                 <label for="pseudo" >Pseudo</label>
                 <input type="text" name="log" id="user_login" class="form-control" value="" size="20">
