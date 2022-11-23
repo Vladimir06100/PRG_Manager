@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/base', function () {
+    return view('base');
+});
+Route::get('/rpg_manager/connexion', function () {
+    return view('/rpg_manager/connexion');
+});
