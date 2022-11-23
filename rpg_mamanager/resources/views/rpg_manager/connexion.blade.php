@@ -19,7 +19,7 @@
                   <input type="submit" name="wp-submit" id="wp-submit" class="btn btn-success m-2" value="Connexion">
                 </div>
               </form>
-            <p class="small text-center text-gray-soft">Vous n'avez pas encore de compte? <a href="" class="btn btn-success m-2">Inscription</a></p>
+            <p class="small text-center text-gray-soft">Vous n'avez pas encore de compte? <a href="{{ route('user.inscription') }}" class="btn btn-success m-2">Inscription</a></p>
           </div>
         </div>
       </section>
