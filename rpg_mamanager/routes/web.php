@@ -13,12 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/* page principale */
 Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/base', function () {
     return view('base');
 });
+/* page connexion */
 Route::get('/rpg_manager/connexion', function () {
     return view('/rpg_manager/connexion');
+});
+/* page inscription */
+Route::get('/rpg_manager/inscription', function () {
+    return view('/rpg_manager/inscription');
 });
