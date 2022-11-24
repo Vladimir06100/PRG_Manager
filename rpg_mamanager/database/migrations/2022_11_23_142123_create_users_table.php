@@ -18,10 +18,10 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->softDeletes();
-            $table->string('pseudo')->unique();
+            $table->string('pseudo')->nullable();
             $table->string('nom');
             $table->string('prenom');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('password');
             $table->rememberToken();
         });

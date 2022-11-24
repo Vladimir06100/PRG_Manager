@@ -22,7 +22,9 @@
           @csrf
           <div class="row">
             <h1 class="text-center">Connexion</h1>
-              <form name="connexion" id="connexion" action="{{ route('user.connexion') }}" method="post">
+              <form name="connexion" id="connexion" action="{{ route('auth.signin') }}" method="post">
+                @csrf
+                
                 <div class="form-group">
                   <label for="email">Email</label>
                   <input type="text" name="email" id="email" class="form-control" value="{{ old('email') }}" size="10">

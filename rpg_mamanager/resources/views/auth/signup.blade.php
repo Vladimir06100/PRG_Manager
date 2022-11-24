@@ -22,7 +22,7 @@
             </div>
          @endif
           
-            <form name="inscription" id="inscription" action="{{ route('user.inscription') }}" method="post">  
+            <form name="inscription" id="inscription" action="{{ route('auth.signup') }}" method="post">  
             @csrf
               <div class="form-group">
                 <label for="pseudo" >Pseudo</label>

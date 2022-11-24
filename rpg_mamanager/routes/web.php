@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -16,7 +17,13 @@ use App\Http\Controllers\UserController;
 
 /* page principale */
 Route::get('/', [UserController::class, 'index'])->name('index');
-/* page connexion */
-Route::get('/rpg_manager/connexion', [UserController::class, 'connexion'])->name('user.connexion');
-/* page inscription */
-Route::get('/rpg_manager/inscription', [UserController::class, 'inscription'])->name('user.inscription');
+
+Route::get('/inscription', [AuthController::class, 'get_signup'])->name('auth.get_signup');
+Route::post('/inscription', [AuthController::class, 'signup'])->name('auth.signup');
+Route::get('/connexion', [AuthController::class, 'get_signin'])->name('auth.get_signin');
+Route::post('/connexion', [AuthController::class, 'signin'])->name('auth.signin');
+
+/* page profil */
+# Route::get('/rpg_manager/profil', [UserController::class, 'profil'])->name('user.profil')->where('id', '[0-9]+');
+
+

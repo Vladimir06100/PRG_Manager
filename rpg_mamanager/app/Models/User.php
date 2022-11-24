@@ -25,4 +25,10 @@ class User extends Model
         'password',
         'remember_token',
     ];
+
+    private string $pseudo;
+    private string $nom;
+    private string $prenom;
+    private string $email;
+    private string $password;
 }

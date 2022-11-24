@@ -25,6 +25,11 @@ class User extends FormRequest
     {
         return [
             //
+            'pseudo' => 'required|string|max:255|unique',
+            'nom' => 'required',
+            'prenom' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required',
         ];
     }
 }

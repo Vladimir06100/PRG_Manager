@@ -14,7 +14,7 @@
       <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="{{ route('index') }}" class="nav-link px-2 text-white">Page Principale</a></li>
+          <li><a href="{{-- route('index') --}}" class="nav-link px-2 text-white">Page Principale</a></li>
           <li><a href="" class="nav-link px-2 text-white">Votre profile</a></li>
           <li><a href="" class="nav-link px-2 text-white">Vos personnages</a></li>
           <li><a href="" class="nav-link px-2 text-white">Groupes</a></li>
@@ -24,8 +24,8 @@
           <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
         </form>
         <div class="text-end">
-          <a href="{{ route('user.connexion') }}" class="btn btn-outline-success me-2">Connexion</a>
-          <a href="{{ route('user.inscription') }}" class="btn btn-outline-success">Inscription</a>
+           <a href="{{-- route('user.connexion') --}}" class="btn btn-outline-success me-2">Connexion</a>
+          <a href="{{-- route('user.inscription') --}}" class="btn btn-outline-success">Inscription</a>
         </div>
       </div>
       </div>
@@ -41,8 +41,6 @@
   {{--FOOTER--}}
   <footer class="mt-auto py-1 text-bg-dark">
     <ul class="nav justify-content-center pb-2 mb-2">
-      <li class="nav-item"><a href="{{ route('index') }}" class="nav-link px-2 text-white">Page Principale</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Votre profile</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Vos personnages</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Groupes</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Cree un personage</a></li>
