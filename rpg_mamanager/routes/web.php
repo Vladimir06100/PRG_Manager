@@ -18,12 +18,18 @@ use App\Http\Controllers\UserController;
 /* page principale */
 Route::get('/', [UserController::class, 'index'])->name('index');
 
+/* page inscription recuperation de formulaire */
 Route::get('/inscription', [AuthController::class, 'get_signup'])->name('auth.get_signup');
+/* page inscription traitement formulaire */
 Route::post('/inscription', [AuthController::class, 'signup'])->name('auth.signup');
+/* page connexion recuperation de formulaire */
 Route::get('/connexion', [AuthController::class, 'get_signin'])->name('auth.get_signin');
+/* page connexion traitement(envoie) formulaire */
 Route::post('/connexion', [AuthController::class, 'signin'])->name('auth.signin');
-
 /* page profil */
-# Route::get('/rpg_manager/profil', [UserController::class, 'profil'])->name('user.profil')->where('id', '[0-9]+');
+Route::get('/profil/{user}', [AuthController::class, 'profil'])->name('profil')->where('id', '[0-9]+');
+/* page deconnexion */
+Route::get('/deconnexion', [AuthController::class, 'logout'])->name('auth.logout');
+
 
 

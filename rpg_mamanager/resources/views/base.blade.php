@@ -13,19 +13,22 @@
     <header class="p-3 text-bg-dark">
       <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        @if(Auth::guest())
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="{{-- route('index') --}}" class="nav-link px-2 text-white">Page Principale</a></li>
-          <li><a href="" class="nav-link px-2 text-white">Votre profile</a></li>
+          <li><a href="{{ route('index') }}" class="nav-link px-2 text-white">Page Principale</a></li>
+          <li><a href="{{ route('profil', 'user') }}" class="nav-link px-2 text-white">Votre profile</a></li>
           <li><a href="" class="nav-link px-2 text-white">Vos personnages</a></li>
           <li><a href="" class="nav-link px-2 text-white">Groupes</a></li>
           <li><a href="" class="nav-link px-2 text-white">Cree un personage</a></li>
         </ul>
+        @else
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
           <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
         </form>
+        @endif
         <div class="text-end">
-           <a href="{{-- route('user.connexion') --}}" class="btn btn-outline-success me-2">Connexion</a>
-          <a href="{{-- route('user.inscription') --}}" class="btn btn-outline-success">Inscription</a>
+           <a href="{{ route('auth.get_signin') }}" class="btn btn-outline-success me-2">Connexion</a>
+          <a href="{{ route('auth.get_signup') }}" class="btn btn-outline-success">Inscription</a>
         </div>
       </div>
       </div>

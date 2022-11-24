@@ -21,10 +21,14 @@ class User extends Model
         'password',
     ];
 
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+ 
+    
+
+
+    public function getRouteKeyName()
+    {
+        return 'pseudo';
+    }
 
     private string $pseudo;
     private string $nom;

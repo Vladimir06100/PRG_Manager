@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Http\Requests\User as UserRequest;
 
 class AuthController extends Controller
 {
@@ -11,8 +13,9 @@ class AuthController extends Controller
         return view('auth.signin');
     }
 
-    public function auth(Request $request) 
+    public function signin(Request $request, User $user)
     {
+        
         // POST CONNEXION
         $request->validate([
             'email' => 'required|email',
@@ -28,10 +31,8 @@ class AuthController extends Controller
         if (!password_verify($password, $user->password)) {
             return redirect()->route('auth.signin')->with('error', 'Email ou mot de passe incorrect');
         }
-         
-        session(['user' => $user]);
-
-        return redirect()->route('index')->with('success', 'Vous êtes connecté');
+        
+        return redirect()->route('profil', $user)->with('user', $user);
 
     }
 
@@ -43,22 +44,36 @@ class AuthController extends Controller
     public function signup(Request $request)
     {
         $request->validate([
-            'pseudo' => 'required|min:3|max:20',
+            'pseudo' => 'required|min:3|max:20|unique:users',
             'nom' => 'required|min:3|max:20',
             'prenom' => 'required|min:3|max:20',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
             'password' => 'required|min:6|max:20'
         ]);
-
+        $user = new User();
+        $user->pseudo = $request->input('pseudo');
+        $user->nom = $request->input('nom');
+        $user->prenom = $request->input('prenom');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+        $user->save();
+        return redirect()->route('profil', $user )->with('success', 'Votre compte a bien été créé');
     }
 
     public function logout()
     {
         // DECONNEXION
+        session()->forget('user');
+        return redirect()->route('index')->with('success', 'Vous êtes déconnecté');
     }
 
-    public function profil()
+    public function profil(Request $request, $id)
     {
-        // PROFIL
+        session()->get('user');
+        $value = $request->session()->get('key');
+        $user = User::find($id);
+        return view('profil')->with('user', $user);
     }
+   
+    
 }
