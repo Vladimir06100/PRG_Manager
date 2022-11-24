@@ -1,5 +1,5 @@
 @extends('base')
-@section('title', 'Inscription')
+@section('title', 'Connexion')
 @section('content')
     {{--CONTENT--}}
       <section class="section">
