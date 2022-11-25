@@ -41,7 +41,6 @@
                 <input type="text" name="prenom" id="prenom" class="form-control @error('prenom') is-invalid @enderror" value="{{ old('prenom') }}" size="20">
                 <!-- Error -->
                 @error('prenom')<div class="invalid-feedback">{{ $errorMessage }}</div>@enderror
-                
               </div>
               <div class="form-group">
                 <label for="email">Votre Email</label>

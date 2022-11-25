@@ -17,7 +17,4 @@ class UserController extends Controller
         $user = User::all();
         return view('index')->with('user', $user);
     }
-
-    //
-   
 }

@@ -27,7 +27,7 @@ Route::get('/connexion', [AuthController::class, 'get_signin'])->name('auth.get_
 /* page connexion traitement(envoie) formulaire */
 Route::post('/connexion', [AuthController::class, 'signin'])->name('auth.signin');
 /* page profil */
-Route::get('/profil/{user}', [AuthController::class, 'profil'])->name('profil')->where('id', '[0-9]+');
+Route::get('/profil/{user}', [AuthController::class, 'profil'])->name('profil')->where('user', '[0-9]+');
 /* page deconnexion */
 Route::get('/deconnexion', [AuthController::class, 'logout'])->name('auth.logout');
 

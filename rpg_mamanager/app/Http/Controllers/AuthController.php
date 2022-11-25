@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\User as UserRequest;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -15,23 +16,23 @@ class AuthController extends Controller
 
     public function signin(Request $request, User $user)
     {
-        
         // POST CONNEXION
         $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
-
         $email = $request->input('email');
         $password = $request->input('password');
         $user = User::where('email', $email)->first();
         if (!$user) {
-            return redirect()->route('auth.signin')->with('error', 'Email ou mot de passe incorrect');
+            return redirect()->route('auth.signin')->withErrors(['Email incorrect'])->withInput();
         }
-        if (!password_verify($password, $user->password)) {
-            return redirect()->route('auth.signin')->with('error', 'Email ou mot de passe incorrect');
+        if(Hash::check($password, $user->password)){
+        //if (!password_verify($password, $user->password)) {
+            return redirect()->route('auth.signin')->withErrors(['Mot de passe incorrect'])->withInput();
         }
-        
+
+        session(['user' => $user]);
         return redirect()->route('profil', $user)->with('user', $user);
 
     }
@@ -55,8 +56,9 @@ class AuthController extends Controller
         $user->nom = $request->input('nom');
         $user->prenom = $request->input('prenom');
         $user->email = $request->input('email');
-        $user->password = $request->input('password');
+        $user->password =Hash::make($request->input('password'));
         $user->save();
+        session(['user' => $user]);
         return redirect()->route('profil', $user )->with('success', 'Votre compte a bien été créé');
     }
 
@@ -67,13 +69,10 @@ class AuthController extends Controller
         return redirect()->route('index')->with('success', 'Vous êtes déconnecté');
     }
 
-    public function profil(Request $request, $id)
+    public function profil(Request $request, User $user)
     {
-        session()->get('user');
-        $value = $request->session()->get('key');
-        $user = User::find($id);
+        // PROFIL
         return view('profil')->with('user', $user);
     }
-   
-    
+ 
 }
