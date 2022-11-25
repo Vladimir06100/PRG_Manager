@@ -24,7 +24,7 @@ class UserFactory extends Factory
             'nom' => fake()->name(),
             'prenom' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'password' =>Hash::make(Str::random(10)), // password pas de droits de stokage en clair
+            'password' =>Hash::make(Str::random(10)), // password pas de droits de stockage en clair
             'remember_token' => Str::random(10),
         ];
     }

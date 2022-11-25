@@ -27,7 +27,8 @@ Route::get('/connexion', [AuthController::class, 'get_signin'])->name('auth.get_
 /* page connexion traitement(envoie) formulaire */
 Route::post('/connexion', [AuthController::class, 'signin'])->name('auth.signin');
 /* page profil */
-Route::get('/profil/{user}', [AuthController::class, 'profil'])->name('profil')->where('user', '[0-9]+');
+/* remplacement du parametre {user} par service du session avec function session active meme en rechargement */
+Route::get('/me', [AuthController::class, 'profil'])->name('profil');
 /* page deconnexion */
 Route::get('/deconnexion', [AuthController::class, 'logout'])->name('auth.logout');
 

@@ -31,9 +31,8 @@ class AuthController extends Controller
         //if (!password_verify($password, $user->password)) {
             return redirect()->route('auth.signin')->withErrors(['Mot de passe incorrect'])->withInput();
         }
-
         session(['user' => $user]);
-        return redirect()->route('profil', $user)->with('user', $user);
+        return redirect()->route('profil');
 
     }
 
@@ -69,10 +68,10 @@ class AuthController extends Controller
         return redirect()->route('index')->with('success', 'Vous êtes déconnecté');
     }
 
-    public function profil(Request $request, User $user)
+    public function profil()
     {
         // PROFIL
-        return view('profil')->with('user', $user);
+        return view('profil')->with('user', session('user'));
     }
  
 }
