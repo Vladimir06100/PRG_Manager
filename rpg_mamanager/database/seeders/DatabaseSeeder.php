@@ -21,6 +21,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             Users::class,
         ]);
+        $this->call([
+            Personnages::class,
+        ]);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
