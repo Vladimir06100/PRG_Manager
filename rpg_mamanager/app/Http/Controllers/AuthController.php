@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    // Get inscription
     public function get_signin()
     {
         return view('auth.signin');
@@ -27,13 +28,13 @@ class AuthController extends Controller
         if (!$user) {
             return redirect()->route('auth.signin')->withErrors(['Email incorrect'])->withInput();
         }
-        if(Hash::check($password, $user->password)){
-        //if (!password_verify($password, $user->password)) {
+        // fonction pas car accès a la base de donnée avec n'importe quel mot de passe
+        //if(Hash::check($password, $request->password)){
+       if (!password_verify($password, $user->password)) {
             return redirect()->route('auth.signin')->withErrors(['Mot de passe incorrect'])->withInput();
         }
         session(['user' => $user]);
-        return redirect()->route('profil');
-
+        return redirect()->route('profil')->with('success', 'Vous êtes connecté');
     }
 
     public function get_signup()
@@ -41,21 +42,15 @@ class AuthController extends Controller
         return view('auth.signup');
     }
 
-    public function signup(Request $request)
+    public function signup(UserRequest $request, User $user)
     {
-        $request->validate([
-            'pseudo' => 'required|min:3|max:20|unique:users',
-            'nom' => 'required|min:3|max:20',
-            'prenom' => 'required|min:3|max:20',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6|max:20'
-        ]);
+        // POST INSCRIPTION
         $user = new User();
         $user->pseudo = $request->input('pseudo');
         $user->nom = $request->input('nom');
         $user->prenom = $request->input('prenom');
         $user->email = $request->input('email');
-        $user->password =Hash::make($request->input('password'));
+        $user->password = Hash::make($request->input('password'));
         $user->save();
         session(['user' => $user]);
         return redirect()->route('profil', $user )->with('success', 'Votre compte a bien été créé');

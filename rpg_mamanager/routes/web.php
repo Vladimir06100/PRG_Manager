@@ -19,18 +19,26 @@ use App\Http\Controllers\UserController;
 Route::get('/', [UserController::class, 'index'])->name('index');
 
 /* page inscription recuperation de formulaire */
+// Middleware pour protéger la page inscription
+
+
 Route::get('/inscription', [AuthController::class, 'get_signup'])->name('auth.get_signup');
 /* page inscription traitement formulaire */
 Route::post('/inscription', [AuthController::class, 'signup'])->name('auth.signup');
+
 /* page connexion recuperation de formulaire */
-Route::get('/connexion', [AuthController::class, 'get_signin'])->name('auth.get_signin');
+Route::get('/connexion', [AuthController::class, 'get_signin'])->name('auth.get_signin'); #getlogin
 /* page connexion traitement(envoie) formulaire */
-Route::post('/connexion', [AuthController::class, 'signin'])->name('auth.signin');
+Route::post('/connexion', [AuthController::class, 'signin'])->name('auth.signin'); #login
+
+
 /* page profil */
 /* remplacement du parametre {user} par service du session avec function session active meme en rechargement */
-Route::get('/me', [AuthController::class, 'profil'])->name('profil');
+Route::get('/me', [AuthController::class, 'profil'])->name('profil'); #profil
 /* page deconnexion */
 Route::get('/deconnexion', [AuthController::class, 'logout'])->name('auth.logout');
+
+/* page create personnage */
 
 
 

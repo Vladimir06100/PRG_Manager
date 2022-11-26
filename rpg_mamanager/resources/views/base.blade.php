@@ -10,6 +10,8 @@
 
 <body class="d-flex flex-column h-100">
     {{--HEADER--}}
+    
+    
     <header class="p-3 text-bg-dark">
       <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -32,7 +34,7 @@
           @if(session()->has('user'))
           <a href="{{ route('auth.logout') }}" class="btn btn-outline-light me-2">Deconnexion</a>
           @else
-           <a href="{{ route('auth.get_signin') }}" class="btn btn-outline-success me-2">Connexion</a>
+           <a href="{{ route('auth.get_signin') }}" class="btn btn-outline-success me-2 $gray-600">Connexion</a>
           <a href="{{ route('auth.get_signup') }}" class="btn btn-outline-success">Inscription</a>
           @endif
         </div>

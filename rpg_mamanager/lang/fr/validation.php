@@ -61,8 +61,17 @@ return array(
         "file"    => "La taille du fichier de :attribute doit être de :size kilobytes.",
         "string"  => "Le texte de :attribute doit contenir :size caractères.",
     ),
-    "unique"           => "La valeur du champ :attribute est déjà utilisée.",
+    "unique"           => " :attribute est déjà utilisée.",
     "url"              => "Le format de l'URL de :attribute n'est pas valide.",
+    "password"         => [
+        'required' => 'Le mot de passe est obligatoire',
+            'min' => 'Le mot de passe doit contenir au moins 8 caractères',
+            'letters' => 'Le mot de passe doit contenir au moins 1 lettre',
+            'numbers' => 'Le mot de passe doit contenir au moins 1 chiffre',
+            'symbols' => 'Le mot de passe doit contenir au moins 1 symbole',
+            'uncompromised' => 'Le mot de passe doit être sécurisé',
+    ],
+
 
     /*
     |--------------------------------------------------------------------------
