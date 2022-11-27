@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Personnage;
 use Illuminate\Http\Request;
 
+
+
 class PersonnageController extends Controller
 {
     /**
@@ -18,7 +20,6 @@ class PersonnageController extends Controller
         
     
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -26,9 +27,9 @@ class PersonnageController extends Controller
      */
     public function create()
     {
-        // create personnage
         return view('personnages.create');
     }
+  
 
     /**
      * Store a newly created resource in storage.
@@ -39,7 +40,19 @@ class PersonnageController extends Controller
     public function store(Request $request)
     {
         // store personnage
-        Personnage::create($request->toArray());
+        $personnage = new Personnage();
+        $personnage->nom = $request->nom;
+        $personnage->description = $request->description;
+        $personnage->specialite = $request->specialite;
+        $personnage->image = $request->image;
+        $personnage->magie = $request->magie;
+        $personnage->force = $request->force;
+        $personnage->agilite = $request->agilite;
+        $personnage->intelligence = $request->intelligence;
+        $personnage->vie = $request->vie;
+        $personnage['user_id'] =  session('user')->id;
+        $personnage->save();
+        
         return redirect()->route('personnages.index');
     }
 
@@ -50,11 +63,13 @@ class PersonnageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Personnage $personnage)
+  
     {
-        // show personnage
-        return view('show_personnage', compact('personnage'));
+        $personnage = Personnage::find($personnage->id);
+        return view('personnages.show')->with('personnage', $personnage);
+        
     }
-   
+   // 
     /**
      * Show the form for editing the specified resource.
      *

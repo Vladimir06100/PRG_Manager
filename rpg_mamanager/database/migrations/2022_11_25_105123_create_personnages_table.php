@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('nom');
             $table->string('description');
             $table->string('specialite');
-            $table->string('image')->nullable();
+            $table->longText('image')->nullable();
             $table->integer('magie');
             $table->integer('force');
             $table->integer('agilite');
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->integer('vie');
             // $table->foreignId('user_id')->constrained();
             // $table->foreignId('group_id')->constrained();
-            $table->foreignIdFor(User::class)->constrained()->onDelete('restrict');
+            $table->foreignIdFor(User::class)->constrained()->onDelete('restrict')->onUpdate('restrict');
         });
     }
 

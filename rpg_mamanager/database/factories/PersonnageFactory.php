@@ -20,7 +20,7 @@ class PersonnageFactory extends Factory
             //
             'nom' => fake()->name(),
             'description' => fake()->text(),
-            'specialite' => fake()->text(),
+            'specialite' => fake()->text(10),
             'image' => fake()->imageUrl(),
             'magie' => fake()->numberBetween(1, 14),
             'force' => fake()->numberBetween(1, 14),
