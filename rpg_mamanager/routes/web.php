@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PersonnageController;
 use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,18 +18,14 @@ use App\Http\Controllers\UserController;
 */
 
 /* page principale */
-Route::get('/', [UserController::class, 'index'])->name('index');
+Route::get('/', [PersonnageController::class, 'index'])->name('index');
 
-/* page inscription recuperation de formulaire */
-// Middleware pour protéger la page inscription
-
-
-Route::get('/inscription', [AuthController::class, 'get_signup'])->name('auth.get_signup');
+Route::get('/inscription', [AuthController::class, 'get_signup'])->name('auth.get_signup')->middleware('guest');
 /* page inscription traitement formulaire */
 Route::post('/inscription', [AuthController::class, 'signup'])->name('auth.signup');
 
 /* page connexion recuperation de formulaire */
-Route::get('/connexion', [AuthController::class, 'get_signin'])->name('auth.get_signin'); #getlogin
+Route::get('/connexion', [AuthController::class, 'get_signin'])->name('auth.get_signin')->middleware('guest'); #getlogin
 /* page connexion traitement(envoie) formulaire */
 Route::post('/connexion', [AuthController::class, 'signin'])->name('auth.signin'); #login
 
@@ -39,6 +37,8 @@ Route::get('/me', [AuthController::class, 'profil'])->name('profil'); #profil
 Route::get('/deconnexion', [AuthController::class, 'logout'])->name('auth.logout');
 
 /* page create personnage */
+route::resource('personnages', PersonnageController::class);
+
 
 
 

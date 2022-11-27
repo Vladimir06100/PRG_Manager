@@ -11,8 +11,6 @@ class Personnage extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $table = 'personnages';
-
     protected $guarded = ['id'];
 
     protected $fillable = [
