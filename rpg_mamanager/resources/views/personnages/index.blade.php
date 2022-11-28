@@ -14,6 +14,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title text-center">{{ $personnage->nom }}</h5>  
+                        <p class="card-title text-center">{{ $personage->level }}</p>
                         <p class="card-text text-center">{{ $personnage->description }}</p>
                         <p class="card-text text-center">{{ $personnage->specialite }}</p>
                         <p class="card-text text-center">{{ $personnage->magie }}</p>

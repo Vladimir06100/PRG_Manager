@@ -17,12 +17,14 @@ class RandController extends Controller
         $force = rand(1, 14);
         $agilite = rand(1, 14);
         $intelligence = rand(1, 14);
+        $vie = rand(2, 50);
         //Return the random numbers to the view with JSON
         return response()->json([
             'magie' => $magie,
             'force' => $force,
             'agilite' => $agilite,
             'intelligence' => $intelligence,
+            'vie' => $vie,
         ]);
 
 

@@ -15,13 +15,8 @@ class AuthController extends Controller
         return view('auth.signin');
     }
 
-    public function signin(Request $request, User $user)
+    public function signin(Request $request, UserRequest $user)
     {
-        // POST CONNEXION
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
         $email = $request->input('email');
         $password = $request->input('password');
         $user = User::where('email', $email)->first();

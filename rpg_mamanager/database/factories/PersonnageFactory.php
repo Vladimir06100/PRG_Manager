@@ -19,6 +19,7 @@ class PersonnageFactory extends Factory
         return [
             //
             'nom' => fake()->name(),
+            'level' => fake()->numberBetween(1, 10),
             'description' => fake()->text(),
             'specialite' => fake()->text(10),
             'image' => fake()->imageUrl(),

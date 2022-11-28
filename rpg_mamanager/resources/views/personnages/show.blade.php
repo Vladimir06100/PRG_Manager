@@ -13,6 +13,7 @@
                 <div class="card m-2">
                     <div class="card-header">
                         <h2 class="text-center">{{ $personnage->nom }}</h2>
+                        <h3 class="text-center">LEVEL : {{ $personnage->level }}</h3>
                     </div>
                     <div class="card-body">
                         <div class="row">

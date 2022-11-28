@@ -17,24 +17,13 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-6">
+                                <h4 class="text-center">LEVEL : {{ $personnage->level }}</h4>
                                 <p class="text-center">Description</p>
                                 <p>{{ $personnage->description }}</p>
-                            
-                            {{-- caracteristique du personnage --}}
-                            
-                                <p class="text-center">Caracteristique</p>
-                                <p>Magie : {{ $personnage->magie }}</p>
-                                <p>Force : {{ $personnage->force }}</p>
-                                <p>Agilite : {{ $personnage->agilite }}</p>
-                                <p>Intelligence : {{ $personnage->intelligence }}</p>
-                                <p>Classe : {{ $personnage->specialite }}</p>
+                                <a href="{{ route('personnages.show', $personnage->id) }}" class="btn btn-primary">Détail</a>
                             </div>
                             <div class="col-6">
                                 <img src="{{ $personnage->image }}" alt="image du personnage" class="img-fluid">
-                            </div>
-                            {{-- btn detail --}}
-                            <div class="col-12">
-                                <a href="{{ route('personnages.show', $personnage->id) }}" class="btn btn-primary">Détail</a>
                             </div>
                         </div>
                     </div>

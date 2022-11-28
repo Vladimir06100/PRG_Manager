@@ -18,7 +18,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->softDeletes();
-            $table->string('nom');
+            $table->string('nom')->unique();
+            $table->integer('level')->default(1);
             $table->text('description');
             $table->string('specialite');
             $table->longText('image')->nullable();
@@ -27,8 +28,6 @@ return new class extends Migration
             $table->integer('agilite');
             $table->integer('intelligence');
             $table->integer('vie');
-            // $table->foreignId('user_id')->constrained();
-            // $table->foreignId('group_id')->constrained();
             $table->foreignIdFor(User::class)->constrained()->onDelete('restrict')->onUpdate('restrict');
         });
     }

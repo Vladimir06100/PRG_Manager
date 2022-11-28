@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Personnage;
 use Illuminate\Http\Request;
+use App\Http\Requests\Personnage as PersonnageRequest;
 
 class PersonnageController extends Controller
 {
@@ -24,12 +25,9 @@ class PersonnageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, PersonnageRequest $personnage)
 
     {
-        // store personnage with random numbers in the input fields and the values from the form for magie, force, agilité, intelligence 
-        // create a new personnage with the values from the form and the random numbers
-        // store personnage
         $personnage = new Personnage();
         $personnage->nom = $request->nom;
         $personnage->description = $request->description;
