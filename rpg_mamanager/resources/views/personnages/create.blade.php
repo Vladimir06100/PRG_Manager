@@ -15,6 +15,7 @@
             </div>
          @endif
         {{-- Nom --}}
+        <h1>Crée votre propre personnage.</h1>
         <div class="form-group">
             <label for="nom">Nom "Choisissez un nom unique"</label>
             <input type="text" class="form-control @error('nom') is-invalid @enderror" name="nom" id="nom" placeholder="Nom" value="{{ old('nom') }}"  required>
