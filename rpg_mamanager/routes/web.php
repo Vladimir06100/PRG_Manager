@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PersonnageController;
 use App\Http\Controllers\RandController;
+use App\Http\Controllers\MyPersonnageController;
 
 
 /*
@@ -41,6 +42,18 @@ route::resource('personnages', PersonnageController::class);
 
 // create one route for each method in the controller rand
 Route::get('/rand', [RandController::class, 'rand'])->name('rand');
+
+// create route for my personnage with my id
+Route::get('/my_personnages', [MyPersonnageController::class, 'index'])->name('my_personnages');
+
+// create route for my personnage with my id
+
+
+
+
+
+
+
 
 
 

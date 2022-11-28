@@ -2,7 +2,7 @@
   @section('title', 'Connexion')
 @section('content')
     {{--CONTENT--}}
-    <h1 class="text-center">Personnage</h1>
+    <h1 class="text-center">PAGE Principale</h1>
       
     @foreach ($personnages as $personnage)
 <div class="container m-1">

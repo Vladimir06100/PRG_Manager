@@ -6,6 +6,8 @@ use App\Models\Personnage;
 use Illuminate\Http\Request;
 use App\Http\Requests\Personnage as PersonnageRequest;
 
+
+
 class PersonnageController extends Controller
 {
     public function index()

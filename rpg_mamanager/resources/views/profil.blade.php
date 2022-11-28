@@ -12,14 +12,11 @@
         <div class="alert alert-success">{{ session()->get('success') }}</div>
       @endif
       @if(session()->has('user'))
-            
-
         <!-- Error message -->
               <h2>Bonjour {{ $user->pseudo }}</h2>
               <p>nom : {{ $user->nom }}</p>
               <p>prenom : {{ $user->prenom }}</p>
               <p>email : {{ $user->email }}</p>
-              
       @endif
           </div>
         </div>

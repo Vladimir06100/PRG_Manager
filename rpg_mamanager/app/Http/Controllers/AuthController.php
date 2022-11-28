@@ -15,7 +15,7 @@ class AuthController extends Controller
         return view('auth.signin');
     }
 
-    public function signin(Request $request, UserRequest $user)
+    public function signin(Request $request)
     {
         $email = $request->input('email');
         $password = $request->input('password');
