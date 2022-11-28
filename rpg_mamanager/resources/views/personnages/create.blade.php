@@ -13,6 +13,7 @@
         {{-- Nom --}}
         <div class="form-group">
             <label for="nom">Nom</label>
+            {{-- old value refresh page --}}
             <input type="text" class="form-control" name="nom" id="nom" placeholder="Nom" value="{{ old('nom') }}"  required>
         </div>
         {{-- description --}}
@@ -38,47 +39,56 @@
             <label for="image">Image</label>
             <input type="text" class="form-control" name="image" id="image" placeholder="Image" value="{{ old('image') }}" >
         </div>
-        <div class="row p-2">    
-        {{-- generate random Number for magie force agilite intelligence --}}
-        <div class="col-3">
-            <label for="magie">Magie</label>
-            <input type="text" class="form-control" name="magie" id="magie" placeholder="Magie" value="{{ rand(1, 14),  }}" readonly>
-        </div>
-        <div class="col-3">
-            <label for="force">Force</label>
-            <input type="text" class="form-control" name="force" id="force" placeholder="Force" value="{{ rand(1, 14),  }}" readonly>
-        </div>
-        <div class="col-3">
-            <label for="agilite">Agilite</label>
-            <input type="text" class="form-control" name="agilite" id="agilite" placeholder="Agilite" value="{{ rand(1, 14),  }}" readonly>
-        </div>
-        <div class="col-3">
-            <label for="intelligence">Intelligence</label>
-            <input type="text" class="form-control" name="intelligence" id="intelligence" placeholder="Intelligence" value="{{ rand(1, 14),  }}" readonly>
-        </div>
+          
+        <div class="row p-2">  
+            <div class="col-3">
+                <label for="magie">Magie</label>
+                {{-- with value response json via rand--}}
+
+                
+                <input type="text" class="form-control" name="magie" id="magie" placeholder="Magie" value="{{ rand(1,14) }}" readonly>
+            </div>
+            <div class="col-3">
+                <label for="force">Force</label>
+                <input type="text" class="form-control" name="force" id="force" placeholder="Force" value="{{ rand(1, 14)  }}" readonly>
+            </div>
+            <div class="col-3">
+                <label for="agilite">Agilite</label>
+                <input type="text" class="form-control" name="agilite" id="agilite" placeholder="Agilite" value="{{ rand(1, 14), }}" readonly>
+            </div>
+            <div class="col-3">
+                <label for="intelligence">Intelligence</label>
+                <input type="text" class="form-control" name="intelligence" id="intelligence" placeholder="Intelligence" value="{{ rand(1, 14) }}" readonly>
+            </div>
         </div>
         <div classe="col-12">
-            <button type="select" class="btn btn-primary">Submit</button>
-
-            {{-- <a href="{{return Redirect::back()}}"></a> --}}
-            {{-- fresh page --}}
-            {{-- button shuffle --}}
-
-
-           
-            
-        </div>
-        <label for="vie">Vie "entre 20 et 50"</label>
-            <input type="number" class="form-control" name="vie" id="vie" min="20" max="50" placeholder="Vie" value="{{ rand(20, 50) }}">
-            
-        <div>
-            
-            {{-- button generate random for magie force agilite intelligence --}}
-            {{-- hidden --}}
-            {{-- <input type="hidden" name="user_id" value="{{ Auth::user()->user_id }}"> --}}
-            {{-- button submit --}}
-        </div>
-        {{-- button submit --}}
-        <button type="submit" class="btn btn-primary">Submit</button>
-              
+           <button type="button" class="btn btn-primary" id="get-random-values">Random</button>
+        </div>      
+    </div>
+    <label for="vie">Vie "entre 20 et 50"</label>
+    <input type="number" class="form-control" name="vie" id="vie" min="20" max="50" placeholder="Choisissez une valeur de votre vie" value="">
+</div>
+{{-- button submit --}}
+<button type="submit" class="btn btn-primary">Submit</button>
+    </form>  
 @endsection
+  {{-- <!-- INCLUDE JQUERY --> --}}
+  <script
+  src="https://code.jquery.com/jquery-3.6.1.min.js"
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+  crossorigin="anonymous"></script>
+            <script type="text/javascript">
+            $(document).ready(
+                function() {
+                $('#get-random-values').on('click', function(event) {
+                    event.preventDefault();
+                    $.getJSON('{{ route('rand') }}', function(response) {
+                    $('input[name=agilite]').val(response['agilite']);
+                    $('input[name=force]').val(response['force']);
+                    $('input[name=intelligence]').val(response['intelligence']);
+                    $('input[name=magie]').val(response['magie']);
+                    });
+                });
+                }
+            );
+            </script>

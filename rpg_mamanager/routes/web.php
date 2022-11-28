@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PersonnageController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\RandController;
 
 
 /*
@@ -38,6 +38,9 @@ Route::get('/deconnexion', [AuthController::class, 'logout'])->name('auth.logout
 
 /* page create personnage */
 route::resource('personnages', PersonnageController::class);
+
+// create one route for each method in the controller rand
+Route::get('/rand', [RandController::class, 'rand'])->name('rand');
 
 
 

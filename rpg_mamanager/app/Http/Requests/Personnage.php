@@ -26,7 +26,7 @@ class Personnage extends FormRequest
         return [
             //
             'nom' => 'required|string|max:255|min:3|unique:personnages',
-            'description' => 'required|string|max:255|min:3',
+            'description' => 'required|string|min:3',
             'specialite' => 'required',
             'image' => 'textLong|nullable|string',
             'magie' => 'required|integer|min:0|max:100',
@@ -37,4 +37,3 @@ class Personnage extends FormRequest
         ];
     }
 }
-

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->string('nom');
-            $table->string('description');
+            $table->text('description');
             $table->string('specialite');
             $table->longText('image')->nullable();
             $table->integer('magie');

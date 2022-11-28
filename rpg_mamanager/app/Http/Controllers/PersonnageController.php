@@ -5,26 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Personnage;
 use Illuminate\Http\Request;
 
-
-
 class PersonnageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('index')->with('personnages', Personnage::all());
-        
-    
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
         return view('personnages.create');
@@ -38,7 +25,10 @@ class PersonnageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+
     {
+        // store personnage with random numbers in the input fields and the values from the form for magie, force, agilité, intelligence 
+        // create a new personnage with the values from the form and the random numbers
         // store personnage
         $personnage = new Personnage();
         $personnage->nom = $request->nom;
@@ -52,7 +42,6 @@ class PersonnageController extends Controller
         $personnage->vie = $request->vie;
         $personnage['user_id'] =  session('user')->id;
         $personnage->save();
-        
         return redirect()->route('personnages.index');
     }
 
