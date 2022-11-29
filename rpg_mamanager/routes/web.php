@@ -1,11 +1,9 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PersonnageController;
 use App\Http\Controllers\RandController;
 use App\Http\Controllers\MyPersonnageController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +28,6 @@ Route::get('/connexion', [AuthController::class, 'get_signin'])->name('auth.get_
 /* page connexion traitement(envoie) formulaire */
 Route::post('/connexion', [AuthController::class, 'signin'])->name('auth.signin'); #login
 
-
 /* page profil */
 /* remplacement du parametre {user} par service du session avec function session active meme en rechargement */
 Route::get('/me', [AuthController::class, 'profil'])->name('profil'); #profil
@@ -43,18 +40,14 @@ route::resource('personnages', PersonnageController::class);
 // create one route for each method in the controller rand
 Route::get('/rand', [RandController::class, 'rand'])->name('rand');
 
+// create route for level up
+Route::get('/randLevelUp', [RandController::class, 'randLevelUp'])->name('randLevelUp');
+
 // create route for my personnage with my id
 Route::get('/my_personnages', [MyPersonnageController::class, 'index'])->name('my_personnages');
 
-// create route for my personnage with my id
+// create route for edit my personnage with my id
+Route::any('/my_personnages/{personnage}/edit', [MyPersonnageController::class, 'edit'])->name('my_personnages.edit');
 
-
-
-
-
-
-
-
-
-
-
+// create route for update my personnage with my id
+Route::any('/my_personnages/{personnage}', [MyPersonnageController::class, 'update'])->name('my_personnages.update');

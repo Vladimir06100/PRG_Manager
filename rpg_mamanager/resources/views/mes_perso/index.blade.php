@@ -31,6 +31,7 @@
                       <p>Force : {{ $personnage->force }}</p>
                       <p>Agilite : {{ $personnage->agilite }}</p>
                       <p>Intelligence : {{ $personnage->intelligence }}</p>
+                      <p>Vie : {{ $personnage->vie }}</p>
                       <p>Classe : {{ $personnage->specialite }}</p>
                     </div>
                   <div class="col-6">
@@ -52,7 +53,7 @@
 
           <div class="card-footer">
               <a href="{{ route('personnages.index') }}" class="btn btn-primary">Retour</a>
-              <a href="{{ route('personnages.edit', $personnage->id) }}" class="btn btn-danger">Invite</a>
+              <a href="{{ route('my_personnages.edit', $personnage->id) }}" class="btn btn-danger">Modifier votre Personnage</a>
           </div>
         </div>
 
