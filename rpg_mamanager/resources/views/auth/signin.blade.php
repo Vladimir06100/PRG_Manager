@@ -4,7 +4,6 @@
     {{--CONTENT--}}
       <section class="section">
         <div class="container">
-         
           @if(session()->has('success'))
             <div class="alert alert-success">
             {{ session()->get('success') }}
@@ -19,7 +18,6 @@
                   </ul>
               </div>
           @endif
-          
           <div class="row">
             <h1 class="text-center">Connexion</h1>
             <form name="connexion" id="connexion" action="{{ route('auth.signin') }}" method="post">
