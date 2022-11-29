@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PersonnageController;
 use App\Http\Controllers\RandController;
 use App\Http\Controllers\MyPersonnageController;
+use App\Http\Controllers\GroupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,10 +39,10 @@ Route::get('/deconnexion', [AuthController::class, 'logout'])->name('auth.logout
 route::resource('personnages', PersonnageController::class);
 
 // create one route for each method in the controller rand
-Route::get('/rand', [RandController::class, 'rand'])->name('rand');
+Route::get('/rand', [RandController::class, 'rand'])->name('rand')->middleware('auth');
 
 // create route for level up
-Route::get('/randLevelUp', [RandController::class, 'randLevelUp'])->name('randLevelUp');
+Route::get('/randLevelUp', [RandController::class, 'randLevelUp'])->name('randLevelUp')->middleware('auth');
 
 // create route for my personnage with my id
 Route::get('/my_personnages', [MyPersonnageController::class, 'index'])->name('my_personnages')->middleware('auth');
@@ -51,3 +52,21 @@ Route::any('/my_personnages/{personnage}/edit', [MyPersonnageController::class, 
 
 // create route for update my personnage with my id
 Route::any('/my_personnages/{personnage}', [MyPersonnageController::class, 'update'])->name('my_personnages.update')->middleware('auth')->where('personnage', '[0-9]+');
+
+// create route for delete my personnage with my id
+Route::any('/my_personnages/{personnage}/delete', [MyPersonnageController::class, 'destroy'])->name('my_personnages.destroy')->middleware('auth')->where('personnage', '[0-9]+');
+
+// create route for index group
+Route::any('/groups', [GroupController::class, 'index'])->name('groups')->middleware('auth');
+
+//show group
+Route::get('/groups/{group}', [GroupController::class, 'show'])->name('groups.show')->middleware('auth')->where('group', '[0-9]+');
+
+// create route for create group
+Route::get('/groups/create', [GroupController::class, 'create'])->name('groups.create')->middleware('auth');
+
+// create route for create groupe traitement formulaire
+Route::post('/groups', [GroupController::class, 'store'])->name('groups.store')->middleware('auth');
+
+// destroy group
+Route::any('/groups/{group}/delete', [GroupController::class, 'destroy'])->name('groups.destroy')->middleware('auth')->where('group', '[0-9]+');

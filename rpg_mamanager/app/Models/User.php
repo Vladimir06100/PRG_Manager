@@ -27,9 +27,8 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    private string $pseudo;
-    private string $nom;
-    private string $prenom;
-    private string $email;
-    //private string $password;
+    protected string $pseudo;
+    protected string $nom;
+    protected string $prenom;
+    protected string $email;
 }

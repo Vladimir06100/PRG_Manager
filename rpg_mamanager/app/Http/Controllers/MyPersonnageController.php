@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Personnage;
 use App\Http\Requests\LevelUp as LevelUpRequest;
-use Ramsey\Uuid\Type\Integer;
+
 
 class MyPersonnageController extends Controller
 {
     public function index()
     {
-        $personnage = Personnage::where('user_id', session('user')->id, 'user_id' == 'id')->get();
+        $personnage = Personnage::where('user_id', auth()->user()->id)->get();
         return view('mes_perso/index', ['personnages' => $personnage]);
     }
     //function edit my personnage
@@ -33,6 +32,12 @@ class MyPersonnageController extends Controller
         if ($request->intelligence) {$personnage->intelligence +=(int)$request->intelligence;}
         if ($request->vie) {$personnage->vie += (int)$request->vie;}
         $personnage->save();
+        return redirect()->route('my_personnages');
+    }
+    //function delete my personnage
+    public function destroy(Personnage $personnage)
+    {
+        $personnage->delete();
         return redirect()->route('my_personnages');
     }
 }

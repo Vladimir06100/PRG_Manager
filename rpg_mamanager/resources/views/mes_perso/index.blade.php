@@ -48,7 +48,11 @@
     </div>
       <div class="card-footer">
         <a href="{{ route('personnages.index') }}" class="btn btn-primary">Retour</a>
-        <a href="{{ route('my_personnages.edit', $personnage->id) }}" class="btn btn-danger">Modifier votre Personnage</a>
+        <a href="{{ route('my_personnages.edit', $personnage->id) }}" class="btn btn-dark">Modifier votre Personnage</a>
+        <form action="{{ route('my_personnages.destroy', $personnage->id) }}" method="POST">
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="btn btn-danger m-2">Supprimer votre Personnage</button>
       </div>
     </div>
   </div>

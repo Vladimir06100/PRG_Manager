@@ -22,7 +22,7 @@
           {{-- @if(session()->has('user')) --}}
           <li><a href="{{  route('profil') }}" class="nav-link px-2 text-white">Votre profile</a></li>
           <li><a href="{{  route('my_personnages') }}" class="nav-link px-2 text-white">Vos personnages</a></li>
-          <li><a href="" class="nav-link px-2 text-white">Groupes</a></li>
+          <li><a href="{{ route('groups') }}" class="nav-link px-2 text-white">Groupes</a></li>
           <li><a href="{{ route('personnages.create') }}" class="nav-link px-2 text-white">Cree un personage</a></li>
           @endif
         </ul>

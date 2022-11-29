@@ -47,15 +47,11 @@ class AuthController extends Controller
         */
     }
 
-
-       
-
-
     public function get_signup()
     {
         return view('auth.signup');
     }
-
+    
     public function signup(UserRequest $request, User $user)
     {
         $user = new User();

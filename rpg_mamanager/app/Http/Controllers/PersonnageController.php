@@ -33,7 +33,7 @@ class PersonnageController extends Controller
         $personnage->agilite = $request->agilite;
         $personnage->intelligence = $request->intelligence;
         $personnage->vie = $request->vie;
-        $personnage['user_id'] =  session('user')->id;
+        $personnage->user_id = auth()->user()->id;
         $personnage->save();
         return redirect()->route('personnages.index');
     }
@@ -41,22 +41,6 @@ class PersonnageController extends Controller
     public function show(Personnage $personnage)
     {
         $personnage = Personnage::find($personnage->id);
-        return view('personnages.show')->with('personnage', $personnage);
-        
-    }
-
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
+        return view('personnages.show')->with('personnage', $personnage);       
     }
 }
