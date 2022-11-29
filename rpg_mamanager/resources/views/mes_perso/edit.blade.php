@@ -49,6 +49,7 @@
             <div class="col-6">
                 {{-- vos statistique --}}
                 <p class="text-center">Level : {{ $personnage->level }}</p>
+                <p class="text-center">Magie : {{ $personnage->magie }}</p>
                 <p class="text-center">Force : {{ $personnage->force }}</p>
                 <p class="text-center">Agilite : {{ $personnage->agilite }}</p>
                 <p class="text-center">Intelligence : {{ $personnage->intelligence }}</p>
@@ -56,17 +57,17 @@
             </div>
             <div class="col-5">
               <label for="level">Level "+1"</label>
-              <input type="text" class="form-control" id="level" name="level" value="+1" readonly>
+              <input type="text" class="form-control" id="level" name="level" placeholder="+1"  readonly>
               <label for="magie">Magie</label>
-              <input type="text" class="form-control" name="magie" id="magie" placeholder="Magie" value="" readonly>
+              <input type="text" class="form-control" name="magie" id="magie" placeholder="Magie"  readonly>
               <label for="force">Force</label>
-              <input type="text" class="form-control" name="force" id="force" placeholder="Force" value="" readonly>
+              <input type="text" class="form-control" name="force" id="force" placeholder="Force"  readonly>
               <label for="agilite">Agilite</label>
-              <input type="text" class="form-control" name="agilite" id="agilite" placeholder="Agilite" value="" readonly>
+              <input type="text" class="form-control" name="agilite" id="agilite" placeholder="Agilite" readonly>
               <label for="intelligence">Intelligence</label>
-              <input type="text" class="form-control" name="intelligence" id="intelligence" placeholder="Intelligence" value="" readonly>
+              <input type="text" class="form-control" name="intelligence" id="intelligence" placeholder="Intelligence" readonly>
               <label for="vie">Vie "plus 5"</label>
-              <input type="text" class="form-control" name="vie" id="vie" value="+5" readonly>
+              <input type="text" class="form-control" name="vie" id="vie" placeholder="+5" readonly>
             </div>
             <button class="btn btn-primary" id="get-level-up">Level Up</button>
           </div>
