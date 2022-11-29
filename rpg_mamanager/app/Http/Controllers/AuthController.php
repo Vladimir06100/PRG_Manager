@@ -23,7 +23,6 @@ class AuthController extends Controller
         if (!$user) {
             return redirect()->route('auth.signin')->withErrors(['Email incorrect'])->withInput();
         }
-        // fonction pas car accès a la base de donnée avec n'importe quel mot de passe
         //if(Hash::check($password, $request->password)){
        if (!password_verify($password, $user->password)) {
             return redirect()->route('auth.signin')->withErrors(['Mot de passe incorrect'])->withInput();
@@ -39,7 +38,6 @@ class AuthController extends Controller
 
     public function signup(UserRequest $request, User $user)
     {
-        // POST INSCRIPTION
         $user = new User();
         $user->pseudo = $request->input('pseudo');
         $user->nom = $request->input('nom');

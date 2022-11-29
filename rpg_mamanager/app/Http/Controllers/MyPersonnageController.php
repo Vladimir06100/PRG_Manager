@@ -22,7 +22,6 @@ class MyPersonnageController extends Controller
     //function update my personnage
     public function update(Request $request, Personnage $personnage)
     {
-        //with fill
         $personnage->fill($request->all());
         $personnage->save();
         return redirect()->route('my_personnages');
