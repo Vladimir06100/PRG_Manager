@@ -4,16 +4,13 @@ namespace App\Http\Controllers;
 
 class RandController extends Controller
 {
-    // Random number generator for button press with value  of 1-14 for value magie and 1-14 for value force and 1-14 for value agilité and 1-14 for value intelligence
     public function rand()
-  
     {
         $magie = rand(1, 14);
         $force = rand(1, 14);
         $agilite = rand(1, 14);
         $intelligence = rand(1, 14);
         $vie = rand(2, 50);
-        //Return the random numbers to the view with JSON
         return response()->json([
             'magie' => $magie,
             'force' => $force,
