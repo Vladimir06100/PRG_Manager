@@ -30,9 +30,7 @@ class RandController extends Controller
         $force = rand(0, 2);
         $agilite = rand(0, 2);
         $intelligence = rand(0, 2);
-        // vie +5 without random
         $vie = 5;
-        //Return the random numbers to the view with JSON
         return response()->json([
             'level' => $level,
             'magie' => $magie,
