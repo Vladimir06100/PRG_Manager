@@ -9,7 +9,7 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <p class="text-center">Bonjour {{ session()->get('user')->pseudo }}</p>
+      <p class="text-center">Bonjour {{ auth()->user()->pseudo }}</p>
     </div>
   </div>
 @foreach ($personnages as $personnage)
@@ -23,7 +23,7 @@
         <div class="col-6">
           <p class="text-center">Description</p>
           <p>{{ $personnage->description }}</p>
-          <p class="text-center">Caracteristique</p>
+          <p class="text-center">Caractéristique</p>
           <p>Magie : {{ $personnage->magie }}</p>
           <p>Force : {{ $personnage->force }}</p>
           <p>Agilite : {{ $personnage->agilite }}</p>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\User as UserRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -17,19 +18,38 @@ class AuthController extends Controller
 
     public function signin(Request $request)
     {
-        $email = $request->input('email');
-        $password = $request->input('password');
-        $user = User::where('email', $email)->first();
-        if (!$user) {
-            return redirect()->route('auth.signin')->withErrors(['Email incorrect'])->withInput();
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('/me');
         }
-        //if(Hash::check($password, $request->password)){
-       if (!password_verify($password, $user->password)) {
-            return redirect()->route('auth.signin')->withErrors(['Mot de passe incorrect'])->withInput();
-        }
-        session(['user' => $user]);
-        return redirect()->route('profil')->with('success', 'Vous êtes connecté');
+        return back()->withErrors([
+            'email' => 'Email ou mot de passe incorrect',
+        ]);
+        /** Version validation manuelle
+        *  $email = $request->input('email');
+        *  $password = $request->input('password');
+        *  $user = User::where('email', $email)->first();
+        *  if ($user) {
+        *      if (!Hash::check($password, $user->password)) {
+        *          session(['user' => $user]);
+        *          return redirect()->route('home');
+        *      }
+        *  }
+        *  return back()->withErrors([
+        *      'email' => 'Email ou mot de passe incorrect',
+        *  ]);
+        */
     }
+
+
+       
+
 
     public function get_signup()
     {
@@ -45,21 +65,20 @@ class AuthController extends Controller
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
         $user->save();
-        session(['user' => $user]);
-        return redirect()->route('profil', $user )->with('success', 'Votre compte a bien été créé');
+        Auth::login($user);
+        return redirect()->route('profil', $user)->with('success', 'Votre compte a bien été créé');
     }
 
     public function logout()
     {
         // DECONNEXION
-        session()->forget('user');
+        Auth::logout();
         return redirect()->route('index')->with('success', 'Vous êtes déconnecté');
     }
 
     public function profil()
     {
         // PROFIL
-        return view('profil')->with('user', session('user'));
+        return view('profil')->with('user', Auth::user());
     }
- 
 }

@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+// importation de la classe User pour la relation avec la table users
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Model
+class User extends Authenticatable
 {
     use HasFactory;
     use SoftDeletes;
@@ -30,5 +31,5 @@ class User extends Model
     private string $nom;
     private string $prenom;
     private string $email;
-    private string $password;
+    //private string $password;
 }

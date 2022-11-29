@@ -21,7 +21,6 @@
                 </ul>
             </div>
          @endif
-          
             <form class="m-2" name="inscription" id="inscription" action="{{ route('auth.signup') }}" method="post">  
             @csrf
               <div class="form-group">
@@ -41,7 +40,6 @@
                 <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" value="" size="20">
               <div class="form-group">
                 <input type="submit" name="wp-submit" id="wp-submit" class="btn btn-success m-2" value="Inscription">
-                
               </div>
             </form>
           </div>

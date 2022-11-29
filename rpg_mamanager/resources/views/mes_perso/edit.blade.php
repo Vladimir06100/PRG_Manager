@@ -17,7 +17,7 @@
             </div>
         @endif
       <div class="form-group">
-          <label for="nom">Choissisez un nouveau Nom de votre Personnage</label>
+          <label for="nom">Choisissez un nouveau Nom de votre Personnage</label>
           <input type="text" class="form-control" id="nom" name="nom" value="{{ $personnage->nom }}">
       </div>
       <div class="form-group">
@@ -43,7 +43,7 @@
         <div class="card-body">
           <div class="row col-12">
             <div class="col-6">
-              <p class="text-center">Caracteristique</p>
+              <p class="text-center">Caractéristiques</p>
               <p class="text-center">Vous pouvez ajoutez un level avec 5PV en plus et 0 a 2 stat random</p>
             <div class="row">
             <div class="col-6">
@@ -57,7 +57,7 @@
             </div>
             <div class="col-5">
               <label for="level">Level "+1"</label>
-              <input type="text" class="form-control" id="level" name="level" placeholder="+1"  readonly>
+              <input type="text" class="form-control" id="level" name="level" placeholder="+1" readonly>
               <label for="magie">Magie</label>
               <input type="text" class="form-control" name="magie" id="magie" placeholder="Magie"  readonly>
               <label for="force">Force</label>
@@ -91,7 +91,25 @@
   </form>
 @endsection
 
-<script
+{{-- Version JS pure --}}
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById("get-level-up").addEventListener('click', async (e) => {
+    e.preventDefault();
+    const response = await fetch("{{ route('randLevelUp') }}");
+    const data = await response.json();
+    document.getElementById("level").value = data.level;
+    document.getElementById("magie").value = data.magie;
+    document.getElementById("force").value = data.force;
+    document.getElementById("agilite").value = data.agilite;
+    document.getElementById("intelligence").value = data.intelligence;
+    document.getElementById("vie").value = data.vie;
+  });
+});
+</script>
+
+{{-- Version Jquery --}}
+{{-- <script
 src="https://code.jquery.com/jquery-3.6.1.min.js"
 integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
 crossorigin="anonymous"></script>
@@ -110,6 +128,6 @@ $(document).ready(
         });
     });
   });
-</script>
+</script> --}}
 
       

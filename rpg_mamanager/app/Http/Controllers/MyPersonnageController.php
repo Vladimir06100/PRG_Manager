@@ -23,7 +23,6 @@ class MyPersonnageController extends Controller
     //function update my personnage
     public function update(LevelUpRequest $request, Personnage $personnage)
     {
-
         $personnage->nom = $request->nom;
         $personnage->description = $request->description;
         $personnage->specialite = $request->specialite;

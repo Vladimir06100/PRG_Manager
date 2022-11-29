@@ -3,13 +3,10 @@
 @section('content')
     {{--CONTENT--}}
     <h1 class="text-center">PAGE Principale</h1>
-      
     @foreach ($personnages as $personnage)
 <div class="container m-1">
         <div class="row">
-            <div class="col-12 m-1">
-                {{-- personnage unique --}}
-                {{-- foreach sur mes personnages --}}    
+            <div class="col-12 m-1">   
                 <div class="card">
                     <div class="card-header">
                         <h2 class="text-center">{{ $personnage->nom }}</h2>

@@ -5,11 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1 class="text-center">Personnage</h1>
-                
-                {{-- affichage unique mes personnage --}}
-                
-
+                <h1 class="text-center">Personnage Details</h1>
                 <div class="card m-2">
                     <div class="card-header">
                         <h2 class="text-center">{{ $personnage->nom }}</h2>
@@ -20,7 +16,7 @@
                             <div class="col-6">
                                 <p class="text-center">Description</p>
                                 <p>{{ $personnage->description }}</p>
-                                <p class="text-center">Caracteristique</p>
+                                <p class="text-center">Caractéristiques</p>
                                 <p>Magie : {{ $personnage->magie }}</p>
                                 <p>Force : {{ $personnage->force }}</p>
                                 <p>Agilite : {{ $personnage->agilite }}</p>
@@ -42,16 +38,12 @@
                             </div>
                         </div>
                     </div>
-                    {{-- button back page principale --}}
                     <div class="card-footer">
                         <a href="{{ route('personnages.index') }}" class="btn btn-primary">Retour</a>
-                   
-                    @if (session()->has('user'))
-                   
-                                <a href="{{ route('personnages.edit', $personnage->id) }}" class="btn btn-danger">Invite</a>
-                            
-                        </div>
-                      @endif
+                    @if(auth()->check())
+                        <a href="{{ route('personnages.edit', $personnage->id) }}" class="btn btn-danger">Invite</a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

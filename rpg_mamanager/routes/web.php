@@ -19,12 +19,12 @@ use App\Http\Controllers\MyPersonnageController;
 /* page principale */
 Route::get('/', [PersonnageController::class, 'index'])->name('index');
 
-Route::get('/inscription', [AuthController::class, 'get_signup'])->name('auth.get_signup')->middleware('guest');
+Route::get('/inscription', [AuthController::class, 'get_signup'])->name('auth.get_signup');
 /* page inscription traitement formulaire */
 Route::post('/inscription', [AuthController::class, 'signup'])->name('auth.signup');
 
 /* page connexion recuperation de formulaire */
-Route::get('/connexion', [AuthController::class, 'get_signin'])->name('auth.get_signin')->middleware('guest'); #getlogin
+Route::get('/connexion', [AuthController::class, 'get_signin'])->name('auth.get_signin'); #getlogin
 /* page connexion traitement(envoie) formulaire */
 Route::post('/connexion', [AuthController::class, 'signin'])->name('auth.signin'); #login
 
@@ -44,10 +44,10 @@ Route::get('/rand', [RandController::class, 'rand'])->name('rand');
 Route::get('/randLevelUp', [RandController::class, 'randLevelUp'])->name('randLevelUp');
 
 // create route for my personnage with my id
-Route::get('/my_personnages', [MyPersonnageController::class, 'index'])->name('my_personnages');
+Route::get('/my_personnages', [MyPersonnageController::class, 'index'])->name('my_personnages')->middleware('auth');
 
 // create route for edit my personnage with my id
-Route::any('/my_personnages/{personnage}/edit', [MyPersonnageController::class, 'edit'])->name('my_personnages.edit');
+Route::any('/my_personnages/{personnage}/edit', [MyPersonnageController::class, 'edit'])->name('my_personnages.edit')->middleware('auth')->where('personnage', '[0-9]+');
 
 // create route for update my personnage with my id
-Route::any('/my_personnages/{personnage}', [MyPersonnageController::class, 'update'])->name('my_personnages.update');
+Route::any('/my_personnages/{personnage}', [MyPersonnageController::class, 'update'])->name('my_personnages.update')->middleware('auth')->where('personnage', '[0-9]+');
