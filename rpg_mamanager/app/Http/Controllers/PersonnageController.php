@@ -22,7 +22,6 @@ class PersonnageController extends Controller
   
 
     public function store(Request $request, PersonnageRequest $personnage)
-
     {
         $personnage = new Personnage();
         $personnage->nom = $request->nom;
