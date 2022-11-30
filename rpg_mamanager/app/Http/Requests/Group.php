@@ -6,28 +6,26 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class Group extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
+
     public function authorize()
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
     public function rules()
     {
         return [
             //
-            'name' => 'required',
-            'description' => 'required',
-            'image' => 'required',
+            'name' => 'required|string|min:3|max:255|unique:groups',
+            'description' => 'required|string|min:3',
+            'image' => 'url|nullable|string|unique:groups',
+            'personnage_id' => 'nullable|uuid|exists:personnages,id',
+            'personnage_id1' => 'nullable',
+            'personnage_id2' => 'nullable',
+            'personnage_id3' => 'nullable',
+            'personnage_id4' => 'nullable',
+            'personnage_id5' => 'nullable',
+
         ];
     }
 }

@@ -41,7 +41,7 @@
             <input type="text" class="form-control @error('image') is-invalid @enderror" name="image" id="image" placeholder="Image" value="{{ old('image') }}" >
         </div>
         <div class="row p-2">  
-            <label class="col-12 m-3">Choisissez vos Caractéristiques via button "Vous pouvez pas selectionnez les Valeurs que Random"</label>
+            <label class="col-12 m-3">Choisissez vos Caractéristiques via button "Vous pouvez pas sélectionnez les Valeurs que Random"</label>
             <label class="col-12 m-3">Caractéristiques Magie, Force, Agilité, Intelligence ont une valeur comprise entre 1 et 14</label>
                 
             <div class="col-2">

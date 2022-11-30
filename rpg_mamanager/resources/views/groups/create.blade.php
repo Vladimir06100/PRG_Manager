@@ -19,7 +19,7 @@
     <label for="image">Image du groupe</label>
     <input type="text" name="image" id="image" class="form-control" value="{{ old('image') }}">
   </div>
-    <button type="submit" class="btn btn-primary-dark">Créer</button>
+    <button type="submit" class="btn btn-primary m-2">Créer</button>
   </div>
 
   

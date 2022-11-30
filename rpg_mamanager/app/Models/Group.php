@@ -17,6 +17,7 @@ class Group extends Model
         'name',
         'description',
         'image',
+        'user_id',
         'personnage_id',
         'personnage_id1',
         'personnage_id2',
@@ -29,8 +30,13 @@ class Group extends Model
     protected string $description;
     protected string $image;
     protected int $user_id;
-
-
+    protected int $personnage_id;
+    protected int $personnage_id1;
+    protected int $personnage_id2;
+    protected int $personnage_id3;
+    protected int $personnage_id4;
+    protected int $personnage_id5;
+ 
     public function users()
     {
         return $this->belongsToMany(User::class);

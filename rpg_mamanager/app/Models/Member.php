@@ -15,12 +15,12 @@ class Member extends Model
 
     protected $fillable = [
         'personnage_id',
-        'user_id',
+        'group_id',
         'response',
     ];
     
     protected int $personnage_id;
-    protected int $user_id;
+    protected int $group_id;
     protected bool $response;
 
     public function user()

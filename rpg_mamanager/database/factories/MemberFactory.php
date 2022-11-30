@@ -19,7 +19,7 @@ class MemberFactory extends Factory
         return [
             // join table with user and personnage
             'personnage_id' =>fake()->numberBetween(1, 6),
-            'user_id' =>fake()->numberBetween(1, 6),
+            'group_id' =>fake()->numberBetween(1, 6),
             'response' =>fake()->boolean(),
         ];
     }

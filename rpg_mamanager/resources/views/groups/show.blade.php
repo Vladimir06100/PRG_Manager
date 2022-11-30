@@ -15,6 +15,13 @@
       <div class="col-6">
         <p>Description du groupe : {{ $group->description }}</p>
       </div>
+      <div>
+        <p>Personnage 1 : {{ $group->personnage_id1 }}</p>
+        <p>Personnage 2 : {{ $group->personnage_id2 }}</p>
+        <p>Personnage 3 : {{ $group->personnage_id3 }}</p>
+        <p>Personnage 4 : {{ $group->personnage_id4 }}</p>
+        <p>Personnage 5 : {{ $group->personnage_id5 }}</p>
+      </div>
       <div class="col-12">
         <div class="col-5 m-1">
           {{-- edit a href--}}

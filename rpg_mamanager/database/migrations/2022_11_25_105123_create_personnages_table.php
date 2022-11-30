@@ -7,11 +7,6 @@ use App\Models\User;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('personnages', function (Blueprint $table) {
