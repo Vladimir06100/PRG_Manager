@@ -17,7 +17,12 @@ class Group extends Model
         'name',
         'description',
         'image',
-        'user_id',
+        'personnage_id',
+        'personnage_id1',
+        'personnage_id2',
+        'personnage_id3',
+        'personnage_id4',
+        'personnage_id5',
     ];
 
     protected string $name;

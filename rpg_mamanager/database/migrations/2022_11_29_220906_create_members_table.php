@@ -3,8 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\Member; 
 use App\Models\User;
+use App\Models\Personnage;
+
 
 return new class extends Migration
 {
@@ -19,9 +20,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->softDeletes();
-            // create the columns with user_id  (chef) and group_id (group) for 6 users with response yes or no
-            $table->foreignIdFor(Member::class)->constrained()->onDelete('restrict')->onUpdate('restrict');
-            $table->foreignIdFor(User::class)->constrained()->onDelete('restrict')->onUpdate('restrict');
+            $table->foreignIdFor(Personnage::class, 'personnage_id')->nullable()->constrained()->onDelete('restrict')->onUpdate('restrict');
+            $table->foreignIdFor(User::class, 'user_id')->constrained()->onDelete('restrict')->onUpdate('restrict');
             $table->boolean('response');
 
         });

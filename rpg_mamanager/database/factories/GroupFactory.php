@@ -17,11 +17,16 @@ class GroupFactory extends Factory
     public function definition()
     {
         return [
-            //
+            // create groupe with 6 personnage
             'name' => fake()->name(10),
-            'description' => fake()->text(200),
-            'image' => fake()->imageUrl(),
-            'user_id' => fake()->numberBetween(1, 10),
+            'description' =>fake()->text(100),
+            'image' =>fake()->imageUrl(),
+            'personnage_id' =>fake()->numberBetween(1, 6),
+            'personnage_id1' =>fake()->numberBetween(1, 6),
+            'personnage_id2' =>fake()->numberBetween(1, 6),
+            'personnage_id3' =>fake()->numberBetween(1, 6),
+            'personnage_id4' =>fake()->numberBetween(1, 6),
+            'personnage_id5' =>fake()->numberBetween(1, 6),
         ];
     }
 }

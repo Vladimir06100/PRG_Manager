@@ -22,5 +22,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             Groups::class,
         ]);
+        $this->call([
+            Members::class,
+        ]);
     }
 }

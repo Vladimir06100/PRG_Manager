@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Member extends Model
 {
@@ -14,9 +14,17 @@ class Member extends Model
     protected $guarded = ['id'];
 
     protected $fillable = [
+        'personnage_id',
         'user_id',
-        'group_id',
         'response',
     ];
     
+    protected int $personnage_id;
+    protected int $user_id;
+    protected bool $response;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
