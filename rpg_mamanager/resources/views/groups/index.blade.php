@@ -19,10 +19,7 @@
         <div class="col-5 m-1">
           <a href="{{ route('groups.show', $group->id) }}" class="btn btn-primary">Voir le groupe</a>
         </div>
-        {{-- show personnage in the group --}}
-        <div class="col-5 m-1">
-          <a href="{{ route('groups.show', $group->id) }}" class="btn btn-primary">Voir les personnages</a>
-      </div>
+        
       <div class="col-12">
         <img src="{{ $group->image }}" alt="image du groupe">
       </div>

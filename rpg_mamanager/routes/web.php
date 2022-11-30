@@ -70,3 +70,10 @@ Route::post('/groups', [GroupController::class, 'store'])->name('groups.store')-
 
 // destroy group
 Route::any('/groups/{group}/delete', [GroupController::class, 'destroy'])->name('groups.destroy')->middleware('auth')->where('group', '[0-9]+');
+
+// edit group {select personnage}
+Route::any('/groups/{group}/edit', [GroupController::class, 'edit'])->name('groups.edit')->middleware('auth')->where('group', '[0-9]+');
+
+// update group {select personnage}
+Route::any('/groups/{group}', [GroupController::class, 'update'])->name('groups.update')->middleware('auth')->where('group', '[0-9]+');
+

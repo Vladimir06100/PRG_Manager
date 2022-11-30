@@ -25,7 +25,7 @@
       <div class="col-12">
         <div class="col-5 m-1">
           {{-- edit a href--}}
-          <a href="{{-- route('groups.edit', $group->id) --}}" class="btn btn-primary">Ajouter Membre</a>
+          <a href="{{ route('groups.edit', $group->id) }}" class="btn btn-primary">Ajouter Membre</a>
         </div>
         <div class="col-6 m-1">
           <form action="{{ route('groups.destroy', $group->id) }}" method="POST">

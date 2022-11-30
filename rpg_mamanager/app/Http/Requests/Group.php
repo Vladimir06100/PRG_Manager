@@ -19,12 +19,12 @@ class Group extends FormRequest
             'name' => 'required|string|min:3|max:255|unique:groups',
             'description' => 'required|string|min:3',
             'image' => 'url|nullable|string|unique:groups',
-            'personnage_id' => 'nullable|uuid|exists:personnages,id',
-            'personnage_id1' => 'nullable',
-            'personnage_id2' => 'nullable',
-            'personnage_id3' => 'nullable',
-            'personnage_id4' => 'nullable',
-            'personnage_id5' => 'nullable',
+            'personnage_id' => 'nullable|unique|exists:personnages,id',
+            'personnage_id1' => 'nullable|unique|exists:personnages,id',
+            'personnage_id2' => 'nullable|unique|exists:personnages,id',
+            'personnage_id3' => 'nullable|unique|exists:personnages,id',
+            'personnage_id4' => 'nullable|unique|exists:personnages,id',
+            'personnage_id5' => 'nullable|unique|exists:personnages,id',
 
         ];
     }
